@@ -1,4 +1,4 @@
-package com.example.gunmu.utils;
+package com.nanaki.hookcraft.utils;
 
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.text.Text;
@@ -19,7 +19,12 @@ public class SendMessage {
     public static void sendStateMessage(String ModulesName, boolean currentState) {
         Boolean lastState = lastStates.get(ModulesName);
 
-        if (lastState == null || currentState != lastState) {
+        if (lastState == null) {
+            lastStates.put(ModulesName, currentState);
+            return;
+        }
+
+        if (currentState != lastState) {
             if (currentState) {
                 sendMessage(ModulesName+"_ON");
             } else {

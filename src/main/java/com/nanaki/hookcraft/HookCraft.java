@@ -1,10 +1,10 @@
-package com.example.gunmu;
+package com.nanaki.hookcraft;
 
 import net.fabricmc.api.ModInitializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class Gunmu implements ModInitializer {
+public class HookCraft implements ModInitializer {
     public static final String MOD_ID = "gunmu-mod";
 
     // This logger is used to write text to the console and the log file.

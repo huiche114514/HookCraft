@@ -1,4 +1,4 @@
-package com.example.gunmu.mixin;
+package com.nanaki.hookcraft.mixin;
 
 import net.minecraft.server.MinecraftServer;
 import org.spongepowered.asm.mixin.Mixin;

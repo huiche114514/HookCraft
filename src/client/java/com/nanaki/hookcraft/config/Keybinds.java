@@ -1,4 +1,4 @@
-package com.example.gunmu.config;
+package com.nanaki.hookcraft.config;
 
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.minecraft.client.option.KeyBinding;

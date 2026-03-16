@@ -1,6 +1,6 @@
 {
   "required": true,
-  "package": "com.example.gunmu.mixin.client",
+  "package": "com.nanaki.hookcraft.mixin.client",
   "compatibilityLevel": "JAVA_21",
   "client": [
     "ExampleClientMixin"

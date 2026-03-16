@@ -1,7 +1,7 @@
-package com.example.gunmu.modules.visual;
+package com.nanaki.hookcraft.modules.visual;
 
-import com.example.gunmu.config.Config;
-import com.example.gunmu.utils.SendMessage;
+import com.nanaki.hookcraft.config.Config;
+import com.nanaki.hookcraft.utils.SendMessage;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;

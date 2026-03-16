@@ -1,4 +1,4 @@
-package com.example.gunmu.config;
+package com.nanaki.hookcraft.config;
 
 public class Config {
     public static class Combat {

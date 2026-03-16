@@ -1,4 +1,4 @@
-package com.example.gunmu.modules.movement;
+package com.nanaki.hookcraft.modules.movement;
 
 public class Movement {
     public static void MovementModulesState() {
