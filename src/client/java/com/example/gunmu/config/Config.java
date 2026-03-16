@@ -2,7 +2,7 @@ package com.example.gunmu.config;
 
 public class Config {
     public static class Combat {
-
+        public static boolean killAura = false;
     }
 
     public static class Movement {

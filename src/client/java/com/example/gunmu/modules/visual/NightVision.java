@@ -1,15 +1,12 @@
 package com.example.gunmu.modules.visual;
 
 import com.example.gunmu.config.Config;
+import com.example.gunmu.utils.SendMessage;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 
-import static com.example.gunmu.utils.SendMessage.sendMessage;
-
 public class NightVision {
-
-    private static boolean lastNightVisionState = false;
 
     public static void NightVisionState() {
         MinecraftClient client = MinecraftClient.getInstance();
@@ -29,14 +26,6 @@ public class NightVision {
         } else {
             client.player.removeStatusEffect(StatusEffects.NIGHT_VISION);
         }
-
-        if (currentNightVisionState != lastNightVisionState) {
-            if (currentNightVisionState) {
-                sendMessage("NightVision_ON");
-            } else {
-                sendMessage("NightVision_OFF");
-            }
-            lastNightVisionState = currentNightVisionState;
-        }
+        SendMessage.sendStateMessage("NightVision",currentNightVisionState);
     }
 }

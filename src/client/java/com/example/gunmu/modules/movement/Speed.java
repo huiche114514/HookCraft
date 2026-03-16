@@ -1,15 +1,13 @@
 package com.example.gunmu.modules.movement;
 
 import com.example.gunmu.config.Config;
+import com.example.gunmu.utils.SendMessage;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.attribute.EntityAttributes;
-
-import static com.example.gunmu.utils.SendMessage.sendMessage;
 
 public class Speed {
 
     private static double oldSpeed = -1.0;
-    private static boolean lastSpeedState = false;
 
     public static void SpeedState() {
         MinecraftClient client = MinecraftClient.getInstance();
@@ -29,14 +27,6 @@ public class Speed {
                 oldSpeed = -1.0;
             }
         }
-
-        if (currentSpeedState != lastSpeedState) {
-            if (currentSpeedState) {
-                sendMessage("Speed_ON");
-            } else {
-                sendMessage("Speed_OFF");
-            }
-            lastSpeedState = currentSpeedState;
-        }
+        SendMessage.sendStateMessage("Speed",currentSpeedState);
     }
 }
