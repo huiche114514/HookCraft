@@ -9,7 +9,7 @@ public class Speed {
 
     private static double oldSpeed = -1.0;
 
-    public static void SpeedState() {
+    public static void SpeedMain() {
         MinecraftClient client = MinecraftClient.getInstance();
         if (client == null || client.player == null) return;
 
@@ -27,6 +27,6 @@ public class Speed {
                 oldSpeed = -1.0;
             }
         }
-        SendMessage.sendStateMessage("Speed",currentSpeedState);
+        SendMessage.sendStateMessage("Speed", currentSpeedState);
     }
 }

@@ -8,7 +8,7 @@ import net.minecraft.entity.effect.StatusEffects;
 
 public class NightVision {
 
-    public static void NightVisionState() {
+    public static void NightVisionMain() {
         MinecraftClient client = MinecraftClient.getInstance();
         if (client == null || client.player == null) return;
 
@@ -26,6 +26,6 @@ public class NightVision {
         } else {
             client.player.removeStatusEffect(StatusEffects.NIGHT_VISION);
         }
-        SendMessage.sendStateMessage("NightVision",currentNightVisionState);
+        SendMessage.sendStateMessage("NightVision", currentNightVisionState);
     }
 }

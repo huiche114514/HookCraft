@@ -2,7 +2,7 @@ package com.nanaki.hookcraft.modules.visual;
 
 public class Visual {
     public static void VisualModulesState() {
-        NightVision.NightVisionState();
-        NoFov.NoFovState();
+        NightVision.NightVisionMain();
+        NoFov.NoFovMain();
     }
 }

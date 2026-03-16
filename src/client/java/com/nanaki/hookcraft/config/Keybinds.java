@@ -9,6 +9,8 @@ public class Keybinds {
 
     public static KeyBinding toggleNightVision;
     public static KeyBinding toggleSpeed;
+    public static KeyBinding toggleKillAura;
+    public static KeyBinding toggleNoFov;
 
     public static void register() {
         toggleNightVision = new KeyBinding(
@@ -17,8 +19,15 @@ public class Keybinds {
                 GLFW.GLFW_KEY_V,
                 null
         );
-
         KeyBindingHelper.registerKeyBinding(toggleNightVision);
+
+        toggleNoFov = new KeyBinding(
+                "key.gunmu.toggle_nofov",
+                InputUtil.Type.KEYSYM,
+                GLFW.GLFW_KEY_X,
+                null
+        );
+        KeyBindingHelper.registerKeyBinding(toggleNoFov);
 
         toggleSpeed = new KeyBinding(
                 "key.gunmu.toggle_speed",
@@ -26,23 +35,32 @@ public class Keybinds {
                 GLFW.GLFW_KEY_C,
                 null
         );
-
         KeyBindingHelper.registerKeyBinding(toggleSpeed);
+
+        toggleKillAura = new KeyBinding(
+                "key.gunmu.toggle_killaura",
+                InputUtil.Type.KEYSYM,
+                GLFW.GLFW_KEY_R,
+                null
+        );
+        KeyBindingHelper.registerKeyBinding(toggleKillAura);
     }
 
     public static void tick() {
-        if (toggleNightVision == null) return;
-
-        while (toggleNightVision.wasPressed()) {
-            Config.Visual.nightVision =
-                    !Config.Visual.nightVision;
+        if (toggleNightVision != null && toggleNightVision.wasPressed()) {
+            Config.Visual.nightVision = !Config.Visual.nightVision;
         }
 
-        if (toggleSpeed == null) return;
+        if (toggleNoFov != null && toggleNoFov.wasPressed()) {
+            Config.Visual.noFov = !Config.Visual.noFov;
+        }
 
-        while (toggleSpeed.wasPressed()) {
-            Config.Movement.speed =
-                    !Config.Movement.speed;
+        if (toggleSpeed != null && toggleSpeed.wasPressed()) {
+            Config.Movement.speed = !Config.Movement.speed;
+        }
+
+        if (toggleKillAura != null && toggleKillAura.wasPressed()) {
+            Config.Combat.killAura = !Config.Combat.killAura;
         }
     }
 }

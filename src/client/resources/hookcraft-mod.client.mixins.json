@@ -3,7 +3,8 @@
   "package": "com.nanaki.hookcraft.mixin.client",
   "compatibilityLevel": "JAVA_21",
   "client": [
-    "ExampleClientMixin"
+    "ExampleClientMixin",
+    "visual.NoFovMixin"
   ],
   "injectors": {
     "defaultRequire": 1
