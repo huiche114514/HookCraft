@@ -11,9 +11,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(GameRenderer.class)
 public class NoFovMixin {
     @Inject(method = "getFov", at = @At("HEAD"), cancellable = true)
-    private void noFovHook(Camera camera, float tickDelta, boolean changingFov, CallbackInfoReturnable<Float> cir) {
+    private void NoFovHook(Camera camera, float tickDelta, boolean changingFov, CallbackInfoReturnable<Float> cir) {
         if (NoFov.currentNoFovState()) {
-            cir.setReturnValue(110f);
+            cir.setReturnValue(120f);
         }
     }
 }

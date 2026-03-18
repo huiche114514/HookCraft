@@ -13,7 +13,6 @@ import java.util.List;
 public class KillAura {
 
     public static void KillAuraMain() {
-
         MinecraftClient client = MinecraftClient.getInstance();
         if (client == null || client.player == null || client.world == null) return;
 

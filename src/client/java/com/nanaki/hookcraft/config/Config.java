@@ -13,4 +13,7 @@ public class Config {
         public static boolean nightVision = false;
         public static boolean noFov = false;
     }
+    public static class Gui {
+        public static boolean modulesList = true;
+    }
 }
