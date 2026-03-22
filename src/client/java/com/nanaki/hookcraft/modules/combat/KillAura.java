@@ -11,14 +11,14 @@ import net.minecraft.util.math.Box;
 import java.util.List;
 
 public class KillAura {
-
+    public static boolean CurrentKillAuraState() {
+        return Config.Combat.killAura;
+    }
     public static void KillAuraMain() {
         MinecraftClient client = MinecraftClient.getInstance();
         if (client == null || client.player == null || client.world == null) return;
 
-        boolean currentKillAuraState = Config.Combat.killAura;
-
-        if (currentKillAuraState) {
+        if (CurrentKillAuraState()) {
 
             double range = 3.5;
 
@@ -61,9 +61,8 @@ public class KillAura {
                     client.player.swingHand(Hand.MAIN_HAND);
                 }
             }
-
         }
 
-        SendMessage.sendStateMessage("KillAura", currentKillAuraState);
+        SendMessage.sendStateMessage("KillAura", CurrentKillAuraState());
     }
 }

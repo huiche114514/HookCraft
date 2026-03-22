@@ -8,6 +8,7 @@ import org.lwjgl.glfw.GLFW;
 public class Keybinds {
 
     public static KeyBinding toggleNightVision;
+    public static KeyBinding toggleBhop;
     public static KeyBinding toggleSpeed;
     public static KeyBinding toggleKillAura;
     public static KeyBinding toggleNoFov;
@@ -28,6 +29,14 @@ public class Keybinds {
                 null
         );
         KeyBindingHelper.registerKeyBinding(toggleNoFov);
+
+        toggleBhop = new KeyBinding(
+                "key.gunmu.toggle_bhop",
+                InputUtil.Type.KEYSYM,
+                GLFW.GLFW_KEY_B,
+                null
+        );
+        KeyBindingHelper.registerKeyBinding(toggleBhop);
 
         toggleSpeed = new KeyBinding(
                 "key.gunmu.toggle_speed",
@@ -53,6 +62,10 @@ public class Keybinds {
 
         if (toggleNoFov != null && toggleNoFov.wasPressed()) {
             Config.Visual.noFov = !Config.Visual.noFov;
+        }
+
+        if (toggleBhop != null && toggleBhop.wasPressed()) {
+            Config.Movement.bhop = !Config.Movement.bhop;
         }
 
         if (toggleSpeed != null && toggleSpeed.wasPressed()) {

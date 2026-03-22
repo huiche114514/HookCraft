@@ -9,12 +9,14 @@ import net.minecraft.client.gui.DrawContext;
 import java.util.List;
 
 public class ModulesList {
+    public static boolean CurrentModulesListState() {
+        return Config.Gui.modulesList;
+    }
     public static void ModulesListMain(DrawContext context) {
         MinecraftClient client = MinecraftClient.getInstance();
         if (client.player == null) return;
 
-        boolean currentModulesListState = Config.Gui.modulesList;
-        if (currentModulesListState) {
+        if (CurrentModulesListState()) {
 
             TextRenderer tr = client.textRenderer;
 

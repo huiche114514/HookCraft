@@ -5,12 +5,12 @@ import com.nanaki.hookcraft.config.Config;
 import com.nanaki.hookcraft.utils.SendMessage;
 
 public class NoFov {
-    public static boolean currentNoFovState() {
+    public static float FovValue = 120f;
+    public static boolean CurrentNoFovState() {
         return Config.Visual.noFov;
     }
 
     public static void NoFovMain() {
-        boolean currentNoFovState = Config.Visual.noFov;
-        SendMessage.sendStateMessage("NoFov", currentNoFovState);
+        SendMessage.sendStateMessage("NoFov", CurrentNoFovState());
     }
 }

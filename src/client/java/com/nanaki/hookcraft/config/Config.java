@@ -6,6 +6,7 @@ public class Config {
     }
 
     public static class Movement {
+        public static boolean bhop = false;
         public static boolean speed = false;
     }
 

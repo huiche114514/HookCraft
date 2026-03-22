@@ -7,14 +7,14 @@ import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 
 public class NightVision {
-
+    public static boolean CurrentNightVisionState() {
+        return Config.Visual.nightVision;
+    }
     public static void NightVisionMain() {
         MinecraftClient client = MinecraftClient.getInstance();
         if (client == null || client.player == null) return;
 
-        boolean currentNightVisionState = Config.Visual.nightVision;
-
-        if (currentNightVisionState) {
+        if (CurrentNightVisionState()) {
             client.player.addStatusEffect(new StatusEffectInstance(
                     StatusEffects.NIGHT_VISION,
                     Integer.MAX_VALUE,
@@ -26,6 +26,6 @@ public class NightVision {
         } else {
             client.player.removeStatusEffect(StatusEffects.NIGHT_VISION);
         }
-        SendMessage.sendStateMessage("NightVision", currentNightVisionState);
+        SendMessage.sendStateMessage("NightVision", CurrentNightVisionState());
     }
 }
