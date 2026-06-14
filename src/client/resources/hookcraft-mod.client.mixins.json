@@ -1,0 +1,19 @@
+{
+  "required": true,
+  "package": "com.nanaki.hookcraft.mixin.client",
+  "compatibilityLevel": "JAVA_21",
+  "client": [
+    "combat.CriticalMixin",
+    "combat.NoDelayMixin",
+    "combat.RangeMixin",
+    "movement.AutoSprintMixin",
+    "movement.BhopMixin",
+    "movement.SpeedMixin",
+    "movement.VelocityMixin",
+    "visual.NoFovMixin",
+    "visual.NoHurtCamMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

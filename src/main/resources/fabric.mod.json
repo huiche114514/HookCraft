@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "id": "hookcraft-mod",
+  "version": "${version}",
+  "name": "HookCraft",
+  "description": "这是个为1.21.11开发的辅助型客户端模组",
+  "authors": [
+    "雪碧要兑七喜"
+  ],
+  "contact": {
+    "homepage": "https://fabricmc.net/",
+    "sources": "https://github.com/FabricMC/fabric-example-mod"
+  },
+  "license": "CC0-1.0",
+  "icon": "assets/hookcraft-mod/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.nanaki.hookcraft.HookCraft"
+    ],
+    "client": [
+      "com.nanaki.hookcraft.HookCraftClient"
+    ]
+  },
+  "mixins": [
+    "hookcraft-mod.mixins.json",
+    {
+      "config": "hookcraft-mod.client.mixins.json",
+      "environment": "client"
+    }
+  ],
+  "depends": {
+    "fabricloader": ">=0.18.4",
+    "minecraft": "~1.21.11",
+    "java": ">=21",
+    "fabric-api": "*"
+  }
+}
