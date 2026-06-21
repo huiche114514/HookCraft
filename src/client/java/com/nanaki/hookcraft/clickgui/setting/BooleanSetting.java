@@ -1,7 +1,6 @@
 package com.nanaki.hookcraft.clickgui.setting;
 
 public class BooleanSetting extends Setting<Boolean> {
-
     private BooleanSetting(String name, boolean defaultValue) {
         super(name, defaultValue);
     }
@@ -9,10 +8,6 @@ public class BooleanSetting extends Setting<Boolean> {
     @Override
     public void setValue(Boolean value) {
         this.value = value;
-    }
-
-    public void toggle() {
-        this.value = !this.value;
     }
 
     public static class Builder {

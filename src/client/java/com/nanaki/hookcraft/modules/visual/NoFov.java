@@ -7,7 +7,6 @@ import com.nanaki.hookcraft.modules.Module;
 import com.nanaki.hookcraft.utils.SendMessage;
 
 public class NoFov extends Module {
-
     public static boolean CurrentNoFovState() {
         return Config.Visual.noFov;
     }
