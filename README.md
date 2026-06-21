@@ -1,16 +1,8 @@
-<div align="center">
-    <img 
-        src="src/main/resources/assets/hookcraft-mod/icon.png" 
-        alt="HCIcon"
-        style="border-radius: 32px; width: 128px;"
-    />
-    <div>
-        <p style="margin: 0; font-size: 32px; font-weight: 700;">HookCraft</p>
-        <p style="margin: 4px 0 0 0; font-size: 16px; color: #8b949e;">
-            基于 <strong>Minecraft 1.21.11</strong> 开发的辅助型 Fabric 客户端模组
-        </p>
-    </div>
-</div>
+<img src="src/main/resources/assets/hookcraft-mod/icon.png" width="128" alt="HCIcon" />
+
+# HookCraft
+
+基于 **Minecraft 1.21.11** 开发的辅助型 Fabric 客户端模组
 
 ---
 
