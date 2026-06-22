@@ -35,20 +35,32 @@ public class ModulesList extends Module {
             TextRenderer tr = client.textRenderer;
             if (tr == null) return;
 
-            int rightMargin = 10;
-            int y = 10;
-            int textHeight = tr.fontHeight + 2;
-
             java.util.List<Module> enabledModules = ModuleManager.getModules().stream()
                     .filter(Module::isEnabled)
                     .sorted((m1, m2) -> Integer.compare(tr.getWidth(m2.getName()), tr.getWidth(m1.getName())))
                     .toList();
 
+            if (enabledModules.isEmpty()) return;
+
+            int rightMargin = 10;
+            int currentY = 10;
+            int rowHeight = tr.fontHeight + 4;
+            int paddingX = 5;
+
+            int screenWidth = client.getWindow().getScaledWidth();
+
             for (Module m : enabledModules) {
                 int textWidth = tr.getWidth(m.getName());
-                int x = client.getWindow().getScaledWidth() - textWidth - rightMargin;
-                context.drawTextWithShadow(tr, m.getName(), x, y, 0xFFFFFFFF);
-                y += textHeight;
+                int bgWidth = textWidth + (paddingX * 2);
+                int bgX = screenWidth - bgWidth - rightMargin;
+
+                context.fill(bgX, currentY, screenWidth - rightMargin, currentY + rowHeight, 0x6CFFFFFF);
+
+                int textX = bgX + paddingX;
+                int textY = currentY + (rowHeight / 2 - tr.fontHeight / 2);
+                context.drawText(tr, m.getName(), textX, textY, 0xFFFFFFFF, false);
+
+                currentY += rowHeight;
             }
         }
     }

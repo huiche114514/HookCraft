@@ -13,7 +13,7 @@ import java.util.List;
 public class Frame {
     public String title;
     public int x, y, width, height;
-    public boolean dragging, extended = true;
+    public boolean dragging, extend = true;
     public int dragX, dragY;
     public List<Button> modules = new ArrayList<>();
 
@@ -29,7 +29,7 @@ public class Frame {
 
     private List<RenderItem> getVisibleItems() {
         List<RenderItem> list = new ArrayList<>();
-        if (!extended) return list;
+        if (!extend) return list;
 
         int currentY = y + height;
         for (Button mb : modules) {
@@ -51,6 +51,16 @@ public class Frame {
     }
 
     public void render(DrawContext context, int mouseX, int mouseY) {
+        int primaryColor = 0xAEFFFFFF;
+
+        int surfaceColor = 0x6CFFFFFF;
+        int onSurfaceColor = 0xFF00B0FF;
+        int extendSurfaceColor = 0x3CFFFFFF;
+
+        int checkBoxColor = 0x8CFFFFFF;
+        int textLightColor = 0xFFFFFFFF;
+        int textNightColor = 0xFF1A1A1A;
+
         if (dragging) {
             this.x = mouseX - dragX;
             this.y = mouseY - dragY;
@@ -59,8 +69,8 @@ public class Frame {
         TextRenderer tr = MinecraftClient.getInstance().textRenderer;
         if (tr == null) return;
 
-        context.fill(x, y, x + width, y + height, 0xFF202020);
-        context.drawTextWithShadow(tr, title, x + 4, y + (height / 2 - 4), 0xFFFFFFFF);
+        context.fill(x, y, x + width, y + height, primaryColor);
+        context.drawText(tr, title, x + 4, y + (height / 2 - 4), textNightColor, false);
 
         List<RenderItem> visibleItems = getVisibleItems();
 
@@ -75,33 +85,43 @@ public class Frame {
             switch (item.type) {
                 case 0 -> {
                     Button mb = (Button) item.obj;
-                    int color = mb.isEnabled() ? 0xFF00A9FF : 0xFF151515;
-                    context.fill(x, itemY, x + width, itemY + height, color);
-                    context.drawTextWithShadow(tr, mb.name, x + 6, itemY + (height / 2 - 4), 0xFFFFFFFF);
+                    if (mb.isEnabled()) {
+                        context.fill(x, itemY, x + width, itemY + height, onSurfaceColor);
+                        context.drawText(tr, mb.name, x + 6, itemY + (height / 2 - 4), textLightColor, false);
+                    } else {
+                        context.fill(x, itemY, x + width, itemY + height, surfaceColor);
+                        context.drawText(tr, mb.name, x + 6, itemY + (height / 2 - 4), textNightColor, false);
+                    }
                 }
                 case 1 -> {
                     Slider s = (Slider) item.obj;
-                    context.fill(x, itemY, x + width, itemY + height, 0xFF101010);
-                    double renderWidth = ((s.getValue() - s.min) / (s.max - s.min)) * width;
+                    context.fill(x, itemY, x + width, itemY + height, extendSurfaceColor);
 
+                    double renderWidth = ((s.getValue() - s.min) / (s.max - s.min)) * width;
                     renderWidth = Math.clamp(renderWidth, 0, width);
 
-                    context.fill(x, itemY, x + (int) renderWidth, itemY + height, 0x9000A9FF);
-                    context.drawTextWithShadow(tr, s.name + ": " + s.getDisplayValue(), x + 10, itemY + (height / 2 - 4), 0xFFCCCCCC);
+                    if (renderWidth > 0) {
+                        context.fill(x, itemY, x + (int) renderWidth, itemY + height, onSurfaceColor);
+                    }
+                    context.drawText(tr, s.name + ": " + s.getDisplayValue(), x + 10, itemY + (height / 2 - 4), textLightColor, false);
                 }
                 case 2 -> {
                     Checkbox cb = (Checkbox) item.obj;
-                    context.fill(x, itemY, x + width, itemY + height, 0xFF101010);
-                    int boxColor = cb.getValue() ? 0xFF00A9FF : 0xFF303030;
-                    context.fill(x + 10, itemY + 4, x + 18, itemY + 12, boxColor);
-                    context.drawTextWithShadow(tr, cb.name, x + 24, itemY + (height / 2 - 4), 0xFFCCCCCC);
+                    context.fill(x, itemY, x + width, itemY + height, extendSurfaceColor);
+
+                    if (cb.getValue()) {
+                        context.fill(x + 10, itemY + 4, x + 18, itemY + 12, onSurfaceColor);
+                    } else {
+                        context.fill(x + 10, itemY + 4, x + 18, itemY + 12, checkBoxColor);
+                    }
+                    context.drawText(tr, cb.name, x + 24, itemY + (height / 2 - 4), textLightColor, false);
                 }
             }
         }
     }
 
     public void handleModuleClick(double mouseX, double mouseY, int button) {
-        if (!extended) return;
+        if (!extend) return;
 
         List<RenderItem> visibleItems = getVisibleItems();
 
@@ -147,7 +167,7 @@ public class Frame {
                 dragX = (int) (mouseX - x);
                 dragY = (int) (mouseY - y);
             } else if (button == 1) {
-                extended = !extended;
+                extend = !extend;
             }
         }
     }

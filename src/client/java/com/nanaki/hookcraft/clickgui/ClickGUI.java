@@ -50,7 +50,7 @@ public class ClickGUI extends Screen {
 
     @Override
     public void render(DrawContext context, int mouseX, int mouseY, float delta) {
-        context.fill(0, 0, this.width, this.height, 0x40000000);
+        context.fill(0, 0, this.width, this.height, 0x00FFFFFF);
         super.render(context, mouseX, mouseY, delta);
         for (Frame frame : frames) {
             frame.render(context, mouseX, mouseY);
